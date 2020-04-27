@@ -1,0 +1,103 @@
+.disc {
+    width: 100%;
+    padding: 10px;
+
+    .outer {
+        position: relative;
+        .disc-label {
+            position: absolute;
+            top: 0;
+            left: 0;
+            text-align: center;
+            padding-left: 10px;
+            font-size: 14px;
+        }
+        .inner {
+            width: 90%;
+            margin: 0 auto;
+            padding: 15px;
+            height: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-sizing: border-box;
+            .circle {
+                width: 120px;
+                height: 120px;
+                border: 3px solid #cdcdcd;
+                display: block;
+                border-radius: 50%;
+                box-sizing: border-box;
+                position: relative;
+                
+                .pointer {
+                    width: 1px;
+                    height: 60px;
+                    background: rgb(184, 18, 18);
+                    transform-origin: bottom center;
+                    // transform: translate(60px);
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -100%);
+                    box-sizing: border-box;
+                }
+    
+                .arrow {
+                    width: 1px;
+                    height: 10px;
+                    background: rgb(184, 18, 18);
+                    transform-origin: top center;
+                }
+                .arrow_left {
+                    transform: translate(56px, -2px) rotate(45deg);
+                }
+    
+                .arrow_right {
+                    transform: translate(57px, -12px) rotate(-45deg);
+                }
+            }
+            
+        }
+
+        
+        .direction {
+            width: 30px;
+            height: 30px;
+            position: absolute;
+            margin: 0;
+            text-align: center;
+            font-size: 16px;
+            line-height: 30px;
+            color: #91D5FF;
+        }
+        #north {
+            top: 0;
+            left: 50%;
+            transform: translate(-50%, -25%);
+        }
+        #south {
+            bottom: 0;
+            left: 50%;
+            transform: translate(-50%, 25%);
+        }
+        #west {
+            top: 50%;
+            left: 0;
+            transform: translate(25%, -50%);
+        }
+        #east {
+            top: 50%;
+            right: 0;
+            transform: translate(-25%, -50%);
+        }
+    }
+
+    .slider-label {
+        font-size: 14px;
+        padding-left: 10px;
+    }
+    
+
+    
+}
