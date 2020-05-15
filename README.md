@@ -1,68 +1,35 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# WebGL三维落叶场景
+## 简介
+大四毕业设计，使用Three.js库做落叶场景的仿真，对原题目要求进行了扩展。
+## 预览图
+![](https://blog-1259762155.cos.ap-beijing.myqcloud.com/introduce/1589530592020-preview1.png)
 
-## Available Scripts
+![](https://blog-1259762155.cos.ap-beijing.myqcloud.com/introduce/1589530651314-preview2.png)
+## 框架
++ Three.js
++ React
++ And-Design
 
-In the project directory, you can run:
+## 主要功能
++ 落叶的自由落体
++ 无风时旋转、摇摆
++ 有风时随风运动
++ 叶子可以落地
++ 落地的叶子和空中的叶子都受风力影响
++ 风力风向可以控制, 加入了风声
 
-### `npm start`
+## 存在的问题
++ 在服务器上部署后打开速度非常慢
++ 风向UI的第一个北方向有时失效
++ 调整风力风向后, 由于叶子到达边界会从另一个边界出现, 并重置速度, 会导致叶子聚集, 需要刷新页面
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## 运行方法
+1. 使用git命令`git clone https://github.com/iradw/fallen-leaves` 或直接在点击上方`Clone or download`按钮
+2. 安装Node.js, 如果已安装跳转到步骤4
+3. (可选)安装好Node后，更改npm下载源为国内镜像`npm config set registry http://registry.npm.taobao.org/`
+4. 在项目的根目录`fallen-leaves`, 打开终端, 执行命令`npm install`以安装项目需要的依赖
+5. 执行`npm start`或`yarn start`以开发模式运行
+6. 浏览器中访问`localhost:3000`
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+## 其他
+如需毕业设计文档可联系作者, qq: `1846988227`
