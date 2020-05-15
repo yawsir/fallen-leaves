@@ -1,5 +1,35 @@
 import {createSprite} from './MyThreeUtil'
 
+const mapGroup = {
+    'falledLeaf1Group': (group, naturalProps) => {
+        const {windDirection, windStrength, k} = naturalProps
+        group.children.forEach( sprite => {
+            sprite.velocityX += Math.sin(windDirection) * windStrength * k
+            sprite.velocityZ += -Math.cos(windDirection) * windStrength * k
+            sprite.position.x += sprite.velocityX
+            sprite.position.z += sprite.velocityZ
+        })
+    },
+    'falledLeaf2Group': (group, naturalProps) => {
+        const {windDirection, windStrength, k} = naturalProps
+        group.children.forEach( sprite => {
+            sprite.velocityX += Math.sin(windDirection) * windStrength * k
+            sprite.velocityZ += -Math.cos(windDirection) * windStrength * k
+            sprite.position.x += sprite.velocityX
+            sprite.position.z += sprite.velocityZ
+        })
+    }, 
+    'falledLeaf3Group': (group, naturalProps) => {
+        const {windDirection, windStrength, k} = naturalProps
+        group.children.forEach( sprite => {
+            sprite.velocityX += Math.sin(windDirection) * windStrength * k
+            sprite.velocityZ += -Math.cos(windDirection) * windStrength * k
+            sprite.position.x += sprite.velocityX
+            sprite.position.z += sprite.velocityZ
+        })
+    }
+}
+
 /**
  * 叶子的自由落体
  * @param {any} particle 粒子
@@ -20,6 +50,9 @@ export const freeFall = (particle, range, groundTopOffest, leafMats, groups, nat
         particle.velocityY = 0
         const leaf = createSprite(mat, particle.x, -935, particle.z, 500)
         grp.add(leaf)
+        if (grp.children.length > particle.maxFalled) {
+            grp.children.shift()
+        }
     }
 }
 
@@ -29,6 +62,28 @@ const spining = (particle, map, naturalProps) => {
     map.rotation = particle.currentDeg
     if (particle.currentDeg > maxDeg || particle.currentDeg < minDeg) {
         particle.degVelocity = - particle.degVelocity
+    }
+}
+
+const swing = (particle) => {
+    if(particle.currentHorizontalOffset <= -particle.maxHorizontalOffset || particle.currentHorizontalOffset >= particle.maxHorizontalOffset) {
+        particle.swingVelocity = 0-(particle.swingVelocity)  //速度值取反
+    }
+    particle.currentHorizontalOffset += particle.swingVelocity
+    particle.x += particle.currentHorizontalOffset
+    particle.z += particle.currentHorizontalOffset
+}
+
+
+export const falledLeavesMove = (groups, range, naturalProps) => {
+    const {windStrength} = naturalProps
+    if (windStrength <= 0) {
+        return
+    }
+    for (let groupName in groups) {
+        if (groups.hasOwnProperty(groupName)) {
+            mapGroup[groupName](groups[groupName], naturalProps)
+        }
     }
 }
 
@@ -101,12 +156,7 @@ export const particleTrajectoryWithoutWind = (particle, map, naturalProps) => {
         }
     }
     //摇摆
-    if(particle.currentHorizontalOffset <= -particle.maxHorizontalOffset || particle.currentHorizontalOffset >= particle.maxHorizontalOffset) {
-        particle.swingVelocity = 0-(particle.swingVelocity)  //速度值取反
-    }
-    particle.currentHorizontalOffset += particle.swingVelocity
-    particle.x += particle.currentHorizontalOffset
-    particle.z += particle.currentHorizontalOffset
+    swing(particle)
 
     spining(particle, map, naturalProps)
 }

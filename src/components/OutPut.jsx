@@ -1,12 +1,12 @@
 import React, { useEffect, useRef } from 'react'
 import {initCamera, initRenderer, initOrbitControls, initScene, createPoints, 
     initDirectionalLight} from '../utils/MyThreeUtil'
-import {AxesHelper, PlaneBufferGeometry, TextureLoader, Mesh, Points, MeshStandardMaterial, CubeTextureLoader,
+import {AxesHelper, PlaneBufferGeometry, TextureLoader, Mesh, Points, CubeTextureLoader,
     RepeatWrapping,
     MeshLambertMaterial, SpriteMaterial, Group} from 'three'
 import {leaf1option, leaf1Props, leaf2option, leaf2Props,leaf3option, leaf3Props,
         leaf4option, leaf4Props } from '../config/leaf'
-import {particleTrajectoryWithWind, particleTrajectoryWithoutWind, freeFall} from '../utils/movement'
+import {particleTrajectoryWithWind, particleTrajectoryWithoutWind, freeFall, falledLeavesMove} from '../utils/movement'
 import Disc from './Disc'
 import WindStrength from './WindStrength'
 const pub = process.env.PUBLIC_URL
@@ -98,21 +98,25 @@ export default function OutPut() {
         const falledLeaf1Mat = new SpriteMaterial( {
             map: falledLeaf1Map,
             transparent: true,
+            alphaTest: 0.1,
         })
         const falledLeaf2Map = loader.load(falledLeaf2Png)
         const falledLeaf2Mat = new SpriteMaterial( {
             map: falledLeaf2Map,
             transparent: true,
+            alphaTest: 0.1,
         })
         const falledLeaf3Map = loader.load(falledLeaf3Png)
         const falledLeaf3Mat = new SpriteMaterial( {
             map: falledLeaf3Map,
             transparent: true,
+            alphaTest: 0.1,
         })
         const falledLeaf4Map = loader.load(falledLeaf4Png)
         const falledLeaf4Mat = new SpriteMaterial( {
             map: falledLeaf4Map,
             transparent: true,
+            alphaTest: 0.1,
         })
         
         
@@ -173,6 +177,8 @@ export default function OutPut() {
                 item.geometry.verticesNeedUpdate = true;
             }
         })
+        falledLeavesMove(groups, 5500, naturalProps)
+
         requestAnimationFrame(animate)
         rerender()
     }
@@ -187,16 +193,13 @@ export default function OutPut() {
         const falledLeaf1Group = new Group()
         const falledLeaf2Group = new Group()
         const falledLeaf3Group = new Group()
-        const falledLeaf4Group = new Group()
-
-        window.group2 = falledLeaf2Group
         // pointsArr.push(leaf1Points)
         // pointsArr.push(leaf2Points)
         // pointsArr.push(leaf3Points)
         // pointsArr.push(leaf4Points)
         scene.add(leaf1Points, leaf2Points, leaf3Points)
-        scene.add(falledLeaf1Group, falledLeaf2Group, falledLeaf3Group, falledLeaf4Group)
-        Object.assign(groups, {falledLeaf1Group, falledLeaf2Group, falledLeaf3Group, falledLeaf4Group})
+        scene.add(falledLeaf1Group, falledLeaf2Group, falledLeaf3Group)
+        Object.assign(groups, {falledLeaf1Group, falledLeaf2Group, falledLeaf3Group})
         // console.log(scene.children)
         // console.log(groups)
         animate()

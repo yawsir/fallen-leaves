@@ -151,6 +151,9 @@ export const createPoints = (name, options, particleProps = {}) => {
 
 export const createSprite = (mat, x, y, z, scale) => {
     const sprite = new Sprite(mat)
+    sprite.velocityX = 0
+    sprite.velocityY = 0
+    sprite.velocityZ = 0
     sprite.position.set(x, y, z)
     sprite.scale.set(scale, scale, scale)
     return sprite

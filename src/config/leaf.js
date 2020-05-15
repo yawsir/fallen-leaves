@@ -27,7 +27,8 @@ export const leaf1Props = {
     maxDeg: 3*Math.PI/2,
     degVelocity: 0.01,
     falledMatName: 'falledLeaf1Mat',
-    groupName: 'falledLeaf1Group'
+    groupName: 'falledLeaf1Group',
+    maxFalled: 150,
 }
 
 export const leaf2option = {
@@ -52,6 +53,7 @@ export const leaf2Props = {
     degVelocity: 0.02,
     falledMatName: 'falledLeaf2Mat',
     groupName: 'falledLeaf2Group',
+    maxFalled: 150,
 }
 
 export const leaf3option = {
@@ -76,6 +78,7 @@ export const leaf3Props = {
     degVelocity: 0.015,
     falledMatName: 'falledLeaf3Mat',
     groupName: 'falledLeaf3Group',
+    maxFalled: 150,
 }
 
 export const leaf4option = {
@@ -100,4 +103,5 @@ export const leaf4Props = {
     degVelocity: 0.013,
     falledMatName: 'falledLeaf4Mat',
     groupName: 'falledLeaf4Group',
+    maxFalled: 150,
 }
